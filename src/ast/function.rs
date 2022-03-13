@@ -16,7 +16,7 @@ pub struct AstFunction {
     pub(crate) function_body: AstFunctionBody,
 }
 impl AstFunction {
-    pub(crate) fn codegen(&self, module: &mut ObjectModule, flags: &Flags) -> Result<(), Box<dyn Error>> {
+    pub(crate) fn codegen(&self, module: &mut ObjectModule, flags: &Flags, build_folder: &str) -> Result<(), Box<dyn Error>> {
         let mut main_func_sig = Signature::new(CallConv::SystemV);
         main_func_sig.returns.push(AbiParam::new(codegen::ir::types::I32));
         let mut fn_builder_ctx = FunctionBuilderContext::new();
@@ -47,7 +47,7 @@ impl AstFunction {
 
         
         println!("{}", main_func.display());
-        let mut file = File::create("dist/main.clif")?;
+        let mut file = File::create(format!("{}/{}.clif", build_folder, &name))?;
         file.write_all(main_func.display().to_string().as_bytes())?;
 
         Ok(())
