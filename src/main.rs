@@ -39,7 +39,6 @@ fn compile_and_execute(path: &str) -> i32 {
         .arg(format!("{}/{}.exe", build_folder, target_name))
         .output()
         .unwrap();
-    dbg!(&result);
     println!("result was {}", result.status.code().unwrap());
     result.status.code().unwrap()
 }
