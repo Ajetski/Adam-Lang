@@ -88,7 +88,7 @@ impl Parser {
 
     fn parse_value(&mut self) -> Result<AstValue, ()> {
         match &self.tokens[self.position] {
-            Literal(I32(val)) => {
+            Literal(I64(val)) => {
                 self.position += 1;
                 Ok(AstValue {
                     value: Value::Literal(val.clone()),

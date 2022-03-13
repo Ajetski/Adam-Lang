@@ -1,6 +1,6 @@
 #[derive(Debug, Copy, Clone)]
 pub enum Value {
-    I32(i32),
+    I64(i64),
 }
 
 #[derive(Debug, Copy, Clone)]
@@ -71,8 +71,8 @@ impl Lexer {
             }
         }
         // handle literals
-        else if let Ok(val) = raw_token.parse::<i32>() {
-            Token::Literal(Value::I32(val))
+        else if let Ok(val) = raw_token.parse::<i64>() {
+            Token::Literal(Value::I64(val))
         } else {
             // handle operators
             if raw_token == "+" {

@@ -5,7 +5,7 @@ pub mod ast;
 
 pub mod prelude {
 	pub use crate::{
-		lexer::{*, Token::*, Value::I32},
+		lexer::{*, Token::*, Value::I64},
 		generate::*,
 		ast::{
 			module::*,
@@ -19,8 +19,8 @@ pub mod prelude {
 		parser::*,
 	};
 	pub use std::error::Error;
-	pub use codegen::{ir::Function, verify_function};
-	pub use cranelift::codegen::Context;
+	pub use codegen::{ir::Function, verify_function, settings::Flags};
+	pub use cranelift::codegen::{Context, ir::entities};
 	pub use cranelift::prelude::{isa::*, types::*, *};
 	pub use cranelift_module::{default_libcall_names, Module, Linkage};
 	pub use cranelift_object::ObjectModule;
