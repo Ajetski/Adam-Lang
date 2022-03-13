@@ -137,7 +137,7 @@ impl Parser {
     }
 }
 
-pub fn parse(tokens: Vec<Token>) -> Result<Box<dyn AstNode>, ()> {
+pub fn parse(tokens: Vec<Token>) -> Result<AstFunction, ()> {
     let mut parser = Parser::new(tokens);
-    return Ok(Box::new(parser.parse_function()?));
+    return Ok(parser.parse_function()?);
 }

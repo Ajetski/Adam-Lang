@@ -5,5 +5,3 @@ use crate::prelude::*;
 pub struct AstOperator {
     pub(crate) operator: Operator,
 }
-
-impl AstNode for AstOperator {}

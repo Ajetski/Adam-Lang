@@ -1,6 +1,6 @@
 use junkyard::prelude::*;
 
-fn main() -> Result<(), ()> {
+fn main() {
     let code = r"
         fn main ( ) -> i32 {
             2 + 2
@@ -9,8 +9,7 @@ fn main() -> Result<(), ()> {
     dbg!(code.split('\n').collect::<Vec<&str>>());
     let tokens = lex(code);
     dbg!(&tokens);
-    let ast = parse(tokens)?;
+    let ast = parse(tokens).unwrap();
     dbg!(&ast);
-    // generate()?;
-    Ok(())
+    generate(ast).unwrap();
 }

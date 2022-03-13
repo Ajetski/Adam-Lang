@@ -7,4 +7,3 @@ pub struct AstExpression {
     pub(crate) operator: Option<AstOperator>,
     pub(crate) right_expression: Option<Box<AstExpression>>,
 }
-impl AstNode for AstExpression {}
