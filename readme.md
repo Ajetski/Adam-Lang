@@ -2,6 +2,8 @@
 
 A toy language/compiler for learning compiler design.
 
+[![CI](https://github.com/Ajetski/junkyard/actions/workflows/ci.yml/badge.svg)](https://github.com/Ajetski/junkyard/actions/workflows/ci.yml)
+
 ### Screenshot
 
 ![image](https://user-images.githubusercontent.com/45019515/158071356-45229864-c7b8-4869-a322-e7f62e4d9959.png)
