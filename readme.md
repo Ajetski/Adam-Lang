@@ -1,8 +1,8 @@
-## Junkyard
+## s1mple
 
 A toy language/compiler for learning compiler design.
 
-[![CI](https://github.com/Ajetski/junkyard/actions/workflows/ci.yml/badge.svg)](https://github.com/Ajetski/junkyard/actions/workflows/ci.yml)
+[![CI](https://github.com/Ajetski/s1mple/actions/workflows/ci.yml/badge.svg)](https://github.com/Ajetski/s1mple/actions/workflows/ci.yml)
 
 ### Screenshot
 

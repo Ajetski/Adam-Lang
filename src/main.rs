@@ -1,7 +1,7 @@
-use junkyard::prelude::*;
+use s1mple::prelude::*;
 
 fn main() {
-    let path = std::env::args().nth(1).expect("invalid path. usage: junkyard <path_to_src>");
+    let path = std::env::args().nth(1).expect("invalid path. usage: s1mple <path_to_src>");
     compile_and_execute(path.as_str());
 }
 
@@ -47,6 +47,6 @@ fn compile_and_execute(path: &str) -> i32 {
 
 #[test]
 fn test_add_constants() {
-    let path = "examples/add_constants.junk";
+    let path = "examples/add_constants.s1mple";
     assert_eq!(compile_and_execute(path), 42);
 }
