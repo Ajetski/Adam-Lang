@@ -1,0 +1,8 @@
+{
+	"recommendations": [
+		"gregoire.cranelift",
+		"vadimcn.vscode-lldb",
+		"matklad.rust-analyzer",
+		"bungcip.better-toml"
+	]
+}
