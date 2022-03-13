@@ -1,11 +1,20 @@
 use junkyard::prelude::*;
 
 fn main() {
-    let code = r"
-fn main ( ) -> i64 {
-    1 + 39 + 1 + 1
-}
-";
+    println!("reading file...");
+    
+    let mut code = String::new();
+    let code = {
+        let path = std::env::args().nth(1).expect("invalid path. usage: junkyard <path_to_src>");
+        let file = File::open(path).unwrap();
+        let reader = std::io::BufReader::new(file);
+        
+        for line in reader.lines() {
+            code = format!("{}\n{}", code, line.unwrap());
+        }
+        code.as_str()
+    };
+    
 
     println!("lexing code:");
     println!("{}", code);
