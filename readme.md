@@ -25,5 +25,5 @@ A toy language/compiler for learning compiler design.
 
 ### Tech Stack
 
-* Rust
-* Cranelift
+* [Rust](https://www.rust-lang.org/)
+* [Cranelift](https://github.com/bytecodealliance/wasmtime/tree/main/cranelift)
