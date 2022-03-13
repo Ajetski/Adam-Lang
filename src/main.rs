@@ -1,11 +1,15 @@
 use junkyard::prelude::*;
 
 fn main() {
+    let path = std::env::args().nth(1).expect("invalid path. usage: junkyard <path_to_src>");
+    compile_and_execute(path.as_str());
+}
+
+fn compile_and_execute(path: &str) -> i32 {
     println!("reading file...");
     
     let mut code = String::new();
     let code = {
-        let path = std::env::args().nth(1).expect("invalid path. usage: junkyard <path_to_src>");
         let file = File::open(path).unwrap();
         let reader = std::io::BufReader::new(file);
         
@@ -35,5 +39,15 @@ fn main() {
         .arg(format!("{}/{}.exe", build_folder, target_name))
         .output()
         .unwrap();
+    dbg!(&result);
     println!("result was {}", result.status.code().unwrap());
+    result.status.code().unwrap()
+}
+
+
+#[test]
+fn test_add_constants() {
+    let path = "tests/add_constants.junk";
+    let expected_output = include_str!("../tests/add_constants.output").trim().parse::<i32>().unwrap();
+    assert_eq!(compile_and_execute(path), expected_output);
 }
