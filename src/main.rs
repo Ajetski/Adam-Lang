@@ -47,7 +47,6 @@ fn compile_and_execute(path: &str) -> i32 {
 
 #[test]
 fn test_add_constants() {
-    let path = "tests/add_constants.junk";
-    let expected_output = include_str!("../tests/add_constants.output").trim().parse::<i32>().unwrap();
-    assert_eq!(compile_and_execute(path), expected_output);
+    let path = "examples/add_constants.junk";
+    assert_eq!(compile_and_execute(path), 42);
 }
