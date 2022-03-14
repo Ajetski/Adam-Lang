@@ -28,6 +28,7 @@ A toy language/compiler for learning compiler design.
 * Implement symbol table
 * Expand grammar to include capturing arguments for a function
 * Add more operators and operator precedence
+* Add linux support
 
 ### Tech Stack
 
