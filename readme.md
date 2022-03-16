@@ -10,7 +10,7 @@ A toy language/compiler for learning compiler design.
 
 ### Grammar
 
-| Symbol         |                        Symbol Defisnition                         |
+| Symbol         |                        Symbol Definition                         |
 | -------------- | :---------------------------------------------------------------: |
 | Function       | fn \<Ident>? \<FunctionParams> \<FunctionReturn>? \<FunctionBody> |
 | FunctionParams |                                ( )                                |
