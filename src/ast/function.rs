@@ -18,11 +18,18 @@ pub struct AstFunction {
     pub(crate) function_body: AstFunctionBody,
 }
 impl AstFunction {
-    pub(crate) fn codegen(&self, module: &mut ObjectModule, flags: &Flags, build_folder: &str) -> Result<(), Box<dyn Error>> {
+    pub(crate) fn codegen(
+        &self,
+        module: &mut ObjectModule,
+        flags: &Flags,
+        build_folder: &str,
+    ) -> Result<(), Box<dyn Error>> {
         let mut main_func_sig = Signature::new(CallConv::SystemV);
         if let Some(ast_ident) = &self.function_return {
             if ast_ident.ident == "i64" {
-                main_func_sig.returns.push(AbiParam::new(codegen::ir::types::I64));
+                main_func_sig
+                    .returns
+                    .push(AbiParam::new(codegen::ir::types::I64));
             }
         }
         let mut fn_builder_ctx = FunctionBuilderContext::new();
@@ -45,9 +52,10 @@ impl AstFunction {
         let mut context = Context::for_function(main_func.clone());
         let name = match self.name.clone() {
             Some(name) => name,
-            None => String::from("temp")
+            None => String::from("temp"),
         };
-        let main_func_id = module.declare_function(name.as_str(), Linkage::Local, &main_func_sig)?;
+        let main_func_id =
+            module.declare_function(name.as_str(), Linkage::Local, &main_func_sig)?;
         module.define_function(main_func_id, &mut context)?;
 
         let mut file = File::create(format!("{}/{}.clif", build_folder, &name))?;

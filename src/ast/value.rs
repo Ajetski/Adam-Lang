@@ -25,6 +25,5 @@ impl AstValue {
             Value::Literal(val) => builder.ins().iconst(types::I64, Imm64::from(val)),
             _ => todo!(),
         }
-        
     }
 }

@@ -1,6 +1,5 @@
 use crate::prelude::*;
 
-
 struct Parser {
     tokens: Vec<Token>,
     position: usize,
@@ -25,7 +24,7 @@ impl Parser {
             Ident(name) => {
                 self.position += 1;
                 Some(name.clone())
-            },
+            }
             _ => None,
         };
         match self.tokens[self.position] {
@@ -49,11 +48,13 @@ impl Parser {
                 match &self.tokens[self.position] {
                     Ident(ident) => {
                         self.position += 1;
-                        Some(AstIdent { ident: ident.clone() })
-                    },
+                        Some(AstIdent {
+                            ident: ident.clone(),
+                        })
+                    }
                     _ => None,
                 }
-            } 
+            }
             _ => None,
         };
         let function_body = match self.tokens[self.position] {
@@ -63,9 +64,7 @@ impl Parser {
                 match self.tokens[self.position] {
                     Punctuation(Punctuation::RightBrace) => {
                         self.position += 1;
-                        AstFunctionBody {
-                            expression,
-                        }
+                        AstFunctionBody { expression }
                     }
                     _ => {
                         self.position = init_position;

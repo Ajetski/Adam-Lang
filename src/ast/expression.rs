@@ -15,11 +15,9 @@ impl AstExpression {
                 let expression = self.right_expression.as_ref().unwrap();
                 let rhs = expression.codegen(builder);
                 match operator.operator {
-                    Operator::Add => {
-                            builder.ins().iadd(value, rhs)
-                        }
-                    }
+                    Operator::Add => builder.ins().iadd(value, rhs),
                 }
+            }
             None => value,
         }
     }
