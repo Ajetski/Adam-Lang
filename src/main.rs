@@ -7,12 +7,12 @@ fn main() {
     compile_and_execute(path.as_str());
 }
 
-fn compile_and_execute(path: &str) -> i32 {
+fn compile_and_execute(path: &str) -> Option<i32> {
     println!("reading file...");
 
     let mut code = String::new();
     let code = {
-        let file = File::open(path).unwrap();
+        let file = File::open(path).expect("couldn't find file");
         let reader = std::io::BufReader::new(file);
 
         for line in reader.lines() {
@@ -33,19 +33,17 @@ fn compile_and_execute(path: &str) -> i32 {
     let build_folder = "dist";
     generate(ast, target_name, build_folder).unwrap();
 
-    println!("running program");
-    let result = Command::new(format!("./{}/{}.exe", build_folder, target_name))
-        .arg(format!("{}/{}.o", build_folder, target_name))
-        .arg("-o")
-        .arg(format!("{}/{}.exe", build_folder, target_name))
+    /*println!("running program");
+    let result = Command::new(format!(""))
         .output()
         .unwrap();
-    println!("result was {}", result.status.code().unwrap());
-    result.status.code().unwrap()
+    println!("result was success?: {}", result.status.success());
+    result.status.code()*/
+    todo!("write linker script")
 }
 
 #[test]
 fn test_add_constants() {
     let path = "examples/add_constants.s1mple";
-    assert_eq!(compile_and_execute(path), 42);
+    assert_eq!(compile_and_execute(path).unwrap(), 42);
 }

@@ -62,7 +62,9 @@ impl Lexer {
         let first_letter = raw_token.chars().next().unwrap();
 
         // handle keywords or ident
-        if first_letter >= 'a' && first_letter <= 'z' || first_letter >= 'A' && first_letter <= 'Z'
+        if ('a'..='z').contains(&first_letter)
+            || ('A'..='Z').contains(&first_letter)
+            || '_' == first_letter
         {
             if raw_token == "fn" {
                 Token::Keyword(Keyword::Fn)

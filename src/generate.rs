@@ -9,7 +9,7 @@ pub fn generate(
     build_folder: &str,
 ) -> Result<(), Box<dyn Error>> {
     // setup code generator
-    let isa_builder = cranelift_native::builder().unwrap();
+    let isa_builder = cranelift_native::builder_with_options(true).unwrap();
     let flags = settings::Flags::new(settings::builder());
     let isa = isa_builder.finish(flags.clone()).unwrap();
     let object_builder =
