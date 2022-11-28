@@ -1,4 +1,4 @@
-## s1mple
+## adam-lang
 
 A toy language/compiler for learning compiler design.
 
