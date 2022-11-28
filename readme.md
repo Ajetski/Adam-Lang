@@ -24,13 +24,12 @@ A toy language/compiler for learning compiler design.
 
 ### Todo 
 
-* Expand grammar to add modules that can contain mulitple functions
 * Implement symbol table
 * Expand grammar to include capturing arguments for a function
 * Add more operators and operator precedence
-* Add linux support
+* Expand grammar to add module system
 
-### Tech Stack
+### Technologies Used
 
 * [Rust](https://www.rust-lang.org/)
-* [Cranelift](https://github.com/bytecodealliance/wasmtime/tree/main/cranelift)
+* [LLVM](https://www.rust-lang.org/)

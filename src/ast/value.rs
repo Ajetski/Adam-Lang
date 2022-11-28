@@ -19,10 +19,10 @@ pub enum Value {
 pub struct AstValue {
     pub(crate) value: Value,
 }
-impl AstValue {
-    pub fn codegen(&self, builder: &mut FunctionBuilder) -> entities::Value {
+impl AstNode for AstValue {
+    fn generate_llvm(&self) -> Vec<String> {
         match self.value {
-            Value::Literal(val) => builder.ins().iconst(types::I64, Imm64::from(val)),
+            Value::Literal(val) => todo!(),
             _ => todo!(),
         }
     }

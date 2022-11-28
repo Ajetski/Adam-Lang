@@ -1,3 +1,4 @@
+use super::AstNode;
 use crate::prelude::*;
 
 #[derive(Debug)]
@@ -7,18 +8,16 @@ pub struct AstExpression {
     pub(crate) operator: Option<AstOperator>,
     pub(crate) right_expression: Option<Box<AstExpression>>,
 }
-impl AstExpression {
-    pub fn codegen(&self, builder: &mut FunctionBuilder) -> entities::Value {
-        let value = self.value.codegen(builder);
+impl AstNode for AstExpression {
+    fn generate_llvm(&self) -> Vec<String> {
         match &self.operator {
             Some(operator) => {
                 let expression = self.right_expression.as_ref().unwrap();
-                let rhs = expression.codegen(builder);
                 match operator.operator {
-                    Operator::Add => builder.ins().iadd(value, rhs),
+                    Operator::Add => todo!(),
                 }
             }
-            None => value,
+            None => self.value.generate_llvm(),
         }
     }
 }
