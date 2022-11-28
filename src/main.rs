@@ -30,16 +30,16 @@ fn compile_and_execute(path: &str) -> Option<i32> {
 
     println!("generating executable...");
     let target_name = "out";
-    let build_folder = "dist";
+    let build_folder = ".adam";
     generate(ast, target_name, build_folder).unwrap();
 
-    /*println!("running program");
-    let result = Command::new(format!(""))
+    println!("running program");
+    let result = Command::new(format!("./{}/{}", build_folder, target_name))
         .output()
         .unwrap();
     println!("result was success?: {}", result.status.success());
-    result.status.code()*/
-    todo!("write linker script")
+    println!("status code was: {}", result.status.code().unwrap());
+    result.status.code()
 }
 
 #[test]

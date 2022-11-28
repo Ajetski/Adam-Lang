@@ -19,6 +19,10 @@ pub struct AstFunction {
 }
 impl AstNode for AstFunction {
     fn generate_llvm(&self) -> Vec<String> {
-        self.function_body.generate_llvm()
+        //TODO: replace with real function implementation
+        let mut output = vec!["define i32 @main() {".to_owned()];
+        output.push("\tret i32 0".to_owned());
+        output.push("}".to_owned());
+        output
     }
 }
