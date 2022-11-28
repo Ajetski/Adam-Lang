@@ -1,4 +1,4 @@
-## adam-lang
+## Adam Lang
 
 A toy language/compiler for learning compiler design.
 
